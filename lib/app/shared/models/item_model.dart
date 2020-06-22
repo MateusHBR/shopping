@@ -1,4 +1,5 @@
 class Item {
+  int id;
   String title;
   String subtitle;
   double price;
@@ -6,6 +7,7 @@ class Item {
   bool inCart;
 
   Item({
+    this.id,
     this.title,
     this.subtitle,
     this.price,
