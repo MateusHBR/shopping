@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:my_shopping/app/modules/home/home_controller.dart';
 import 'package:my_shopping/app/shared/models/item_model.dart';
@@ -68,7 +68,7 @@ class ItemWidget extends StatelessWidget {
                         ? Icons.favorite
                         : Icons.favorite_border),
                     onPressed: () {
-                      homeController.toggleFavorite(index, item);
+                      homeController.toggleFavorite(item: item);
                     },
                   ),
                 ),
