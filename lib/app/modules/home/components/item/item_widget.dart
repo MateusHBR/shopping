@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:my_shopping/app/modules/home/home_controller.dart';
+import 'package:my_shopping/app/shared/models/item_model.dart';
 import './title_subtitle_item_widget.dart';
 
 class ItemWidget extends StatelessWidget {
-  final Color color;
-  final String image;
+  final ItemModel item;
+  final int index;
+  final homeController = Modular.get<HomeController>();
 
-  const ItemWidget({this.color, this.image});
+  ItemWidget({this.item, this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +33,9 @@ class ItemWidget extends StatelessWidget {
           border: Border.all(
             color: Colors.grey[200],
           ),
-          color: color,
           image: DecorationImage(
             image: AssetImage(
-              '$image',
+              '${item.image}',
             ),
             fit: BoxFit.cover,
           ),
@@ -44,7 +48,10 @@ class ItemWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                TitleSubtitleItemWidget(),
+                TitleSubtitleItemWidget(
+                  title: item.title,
+                  substitle: item.subtitle,
+                ),
                 Container(
                   height: 45,
                   width: 45,
@@ -57,8 +64,12 @@ class ItemWidget extends StatelessWidget {
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(
-                    icon: Icon(Icons.favorite_border),
-                    onPressed: () {},
+                    icon: Icon(item.isFavorite
+                        ? Icons.favorite
+                        : Icons.favorite_border),
+                    onPressed: () {
+                      homeController.toggleFavorite(index, item);
+                    },
                   ),
                 ),
               ],
