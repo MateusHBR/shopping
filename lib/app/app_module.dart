@@ -1,3 +1,7 @@
+import 'package:my_shopping/app/modules/cart/cart_module.dart';
+import './modules/item/item_module.dart';
+import 'package:my_shopping/app/modules/favorites/favorites_module.dart';
+
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +17,9 @@ class AppModule extends MainModule {
   @override
   List<Router> get routers => [
         Router(Modular.initialRoute, module: HomeModule()),
+        Router('/item', module: ItemModule()),
+        Router('/cart', module: CartModule()),
+        Router('/favorites', module: FavoritesModule()),
       ];
 
   @override
