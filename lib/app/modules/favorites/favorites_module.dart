@@ -1,6 +1,6 @@
 import 'favorites_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dio/dio.dart';
+
 import 'favorites_page.dart';
 
 class FavoritesModule extends ChildModule {

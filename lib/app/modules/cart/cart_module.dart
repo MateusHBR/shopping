@@ -1,6 +1,5 @@
 import 'cart_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dio/dio.dart';
 import 'cart_page.dart';
 
 class CartModule extends ChildModule {
