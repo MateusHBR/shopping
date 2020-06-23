@@ -40,7 +40,11 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
               Icons.favorite,
               color: Colors.black,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Modular.to.pushNamed(
+                '/favorites',
+              );
+            },
           ),
           IconButton(
             icon: Icon(Icons.shopping_cart, color: Colors.black),
