@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:my_shopping/app/modules/home/home_controller.dart';
 import 'favorites_controller.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -13,6 +14,7 @@ class FavoritesPage extends StatefulWidget {
 class _FavoritesPageState
     extends ModularState<FavoritesPage, FavoritesController> {
   //use 'controller' variable to access controller
+  final homeController = Modular.get<HomeController>();
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +22,11 @@ class _FavoritesPageState
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[],
+      body: ListView.builder(
+        itemCount: homeController.favorites.length,
+        itemBuilder: (context, index) {
+          return Text('${homeController.favorites[index].title}');
+        },
       ),
     );
   }
