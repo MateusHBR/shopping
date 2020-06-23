@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class BarWidget extends StatelessWidget {
   final bool favoriteItem;
+  final Function functionFavorite;
 
-  BarWidget({@required this.favoriteItem});
+  BarWidget({@required this.favoriteItem, this.functionFavorite});
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +34,10 @@ class BarWidget extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: IconButton(
-            icon: Icon(favoriteItem ? Icons.favorite : Icons.favorite_border),
-            onPressed: () {},
+            icon: Icon(
+              favoriteItem ? Icons.favorite : Icons.favorite_border,
+            ),
+            onPressed: functionFavorite,
           ),
         ),
       ],
