@@ -1,14 +1,16 @@
-class Item {
-  int id;
-  String title;
-  String subtitle;
-  double price;
+class ItemModel {
+  final int id;
+  final String title;
+  final String subtitle;
+  final double price;
+  final String image;
   bool isFavorite;
   bool inCart;
 
-  Item({
+  ItemModel({
     this.id,
     this.title,
+    this.image,
     this.subtitle,
     this.price,
     this.isFavorite = false,
@@ -20,14 +22,20 @@ class Item {
     String subtitle,
     double price,
     bool isFavorite,
+    String image,
     bool inCart,
   }) {
-    return Item(
+    return ItemModel(
       title: title ?? this.title,
       subtitle: subtitle ?? this.subtitle,
       price: price ?? this.price,
       isFavorite: isFavorite ?? this.isFavorite,
       inCart: inCart ?? this.inCart,
+      image: image ?? this.image,
     );
+  }
+
+  set tgFavorite(bool value) {
+    this.isFavorite = value;
   }
 }
