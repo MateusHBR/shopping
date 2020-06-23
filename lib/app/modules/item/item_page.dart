@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:my_shopping/app/shared/models/item_model.dart';
+import 'package:my_shopping/app/modules/home/home_controller.dart';
 import 'item_controller.dart';
 import './components/bar/bar_widget.dart';
 
 class ItemPage extends StatefulWidget {
-  final ItemModel item;
+  final int index;
 
-  const ItemPage({Key key, this.item}) : super(key: key);
+  const ItemPage({
+    Key key,
+    this.index,
+  }) : super(key: key);
 
   @override
   _ItemPageState createState() => _ItemPageState();
@@ -15,17 +19,19 @@ class ItemPage extends StatefulWidget {
 
 class _ItemPageState extends ModularState<ItemPage, ItemController> {
   //use 'controller' variable to access controller
+  final homeController = Modular.get<HomeController>();
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var item = homeController.productList[widget.index];
     return Scaffold(
       body: Container(
         height: size.height,
         width: size.width,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(widget.item.image),
+            image: AssetImage(item.image),
             fit: BoxFit.cover,
           ),
         ),
@@ -37,7 +43,12 @@ class _ItemPageState extends ModularState<ItemPage, ItemController> {
               Padding(
                 padding: EdgeInsets.only(top: 5),
                 child: BarWidget(
-                  favoriteItem: widget.item.isFavorite,
+                  functionFavorite: () {
+                    setState(() {
+                      homeController.toggleFavorite(item: item);
+                    });
+                  },
+                  favoriteItem: item.isFavorite,
                 ),
               ),
               Column(
