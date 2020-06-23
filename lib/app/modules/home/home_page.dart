@@ -19,7 +19,7 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    // var size = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: AppBar(
@@ -73,8 +73,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                           itemBuilder: (BuildContext context, int index) {
                             ItemModel item = controller.productList[index];
                             return InkWell(
-                              onTap: () => Modular.to
-                                  .pushNamed('/item', arguments: item),
+                              onTap: () {
+                                Modular.to.pushNamed(
+                                  '/item',
+                                  arguments: index,
+                                );
+                              },
                               child: ItemWidget(
                                 item: item,
                                 index: index,
