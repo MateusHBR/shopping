@@ -1,6 +1,5 @@
 import 'item_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:dio/dio.dart';
 import 'item_page.dart';
 
 class ItemModule extends ChildModule {
@@ -14,7 +13,7 @@ class ItemModule extends ChildModule {
         Router(
           Modular.initialRoute,
           child: (_, args) => ItemPage(
-            item: args.data,
+            index: args.data,
           ),
         ),
       ];
