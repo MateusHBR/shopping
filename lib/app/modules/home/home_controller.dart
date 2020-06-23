@@ -11,10 +11,17 @@ abstract class _HomeControllerBase with Store {
   @observable
   ObservableList<ItemModel> productList = dumyProducts.asObservable();
 
-  void toggleFavorite(int index, ItemModel item) {
-    productList[index] = item.copyWith(isFavorite: !item.isFavorite);
-    print(favorites);
+  void toggleFavorite({ItemModel item}) {
+    for (int i = 0; i < productList.length; i++) {
+      if (item == productList[i]) {
+        productList[i] = item.copyWith(isFavorite: !item.isFavorite);
+      }
+    }
   }
+  // void toggleFavorite({int index, ItemModel item}) {
+  //   productList[index] = item.copyWith(isFavorite: !item.isFavorite);
+  //   print(favorites);
+  // }
 
   @computed
   List<ItemModel> get favorites {
