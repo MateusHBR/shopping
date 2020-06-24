@@ -1,6 +1,5 @@
 import 'package:my_shopping/app/modules/cart/cart_module.dart';
 import './modules/item/item_module.dart';
-import 'package:my_shopping/app/modules/favorites/favorites_module.dart';
 
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';

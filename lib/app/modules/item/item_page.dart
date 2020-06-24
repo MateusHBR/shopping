@@ -168,7 +168,9 @@ class _ItemPageState extends ModularState<ItemPage, ItemController> {
                           letterSpacing: 0.5,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        homeController.addInCart(item);
+                      },
                     ),
                   ),
                 ],

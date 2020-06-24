@@ -32,10 +32,51 @@ mixin _$HomeController on _HomeControllerBase, Store {
     });
   }
 
+  final _$inCartAtom = Atom(name: '_HomeControllerBase.inCart');
+
+  @override
+  ObservableList<ItemModel> get inCart {
+    _$inCartAtom.reportRead();
+    return super.inCart;
+  }
+
+  @override
+  set inCart(ObservableList<ItemModel> value) {
+    _$inCartAtom.reportWrite(value, super.inCart, () {
+      super.inCart = value;
+    });
+  }
+
+  final _$_HomeControllerBaseActionController =
+      ActionController(name: '_HomeControllerBase');
+
+  @override
+  void addInCart(ItemModel item) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.addInCart');
+    try {
+      return super.addInCart(item);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void removeInCart(int index) {
+    final _$actionInfo = _$_HomeControllerBaseActionController.startAction(
+        name: '_HomeControllerBase.removeInCart');
+    try {
+      return super.removeInCart(index);
+    } finally {
+      _$_HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
   @override
   String toString() {
     return '''
 productList: ${productList},
+inCart: ${inCart},
 favorites: ${favorites}
     ''';
   }

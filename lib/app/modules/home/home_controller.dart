@@ -27,4 +27,17 @@ abstract class _HomeControllerBase with Store {
   List<ItemModel> get favorites {
     return productList.where((element) => element.isFavorite).toList();
   }
+
+  @observable
+  ObservableList<ItemModel> inCart = <ItemModel>[].asObservable();
+
+  @action
+  void addInCart(ItemModel item) {
+    inCart.add(item);
+  }
+
+  @action
+  void removeInCart(int index) {
+    inCart.removeAt(index);
+  }
 }
