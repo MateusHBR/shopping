@@ -1,3 +1,5 @@
+import 'package:my_shopping/app/modules/home/components/category/controller_category.dart';
+
 import 'home_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -7,6 +9,7 @@ class HomeModule extends ChildModule {
   @override
   List<Bind> get binds => [
         Bind((i) => HomeController()),
+        Bind((i) => ControllerCategory()),
       ];
 
   @override
