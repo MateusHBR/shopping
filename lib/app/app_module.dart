@@ -19,7 +19,6 @@ class AppModule extends MainModule {
         Router(Modular.initialRoute, module: HomeModule()),
         Router('/item', module: ItemModule()),
         Router('/cart', module: CartModule()),
-        Router('/favorites', module: FavoritesModule()),
       ];
 
   @override
